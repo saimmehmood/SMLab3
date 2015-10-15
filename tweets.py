@@ -1,11 +1,12 @@
+from flask import Flask, jsonify
 from celery import Celery
 import urllib
 app = Celery('tasks', backend='amqp', broker='amqp://')
 
-@app.task
-def print_hello():
-    print 'hello there'
-@app.task
+app = Flask(__name__)
+
+@app.route('/tweets/api/v1.0/saysomething', methods=['GET'])
+@celery.task
 def count():
 	han = hon = den = det = denna = denne = hen = 0;
 	fileinput = urllib.urlopen("http://smog.uppmax.uu.se:8080/swift/v1/tweets/tweets_19.txt")
