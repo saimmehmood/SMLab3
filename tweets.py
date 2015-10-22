@@ -1,45 +1,29 @@
-from flask import Flask, jsonify
 from celery import Celery
-import subprocess
-import sys
 import urllib
+import sys, os
 
+app = Celery('tasks', backend='amqp', broker='amqp://')
 
-app = Flask(__name__)
-
-@app.route('/tweets/api/v1.0/saysomething', methods=['GET'])
+@app.task
 def count():
-	
-	han = hon = den = det = denna = denne = hen = 0;
-	fileinput = urllib.urlopen("http://smog.uppmax.uu.se:8080/swift/v1/tweets/tweets_19.txt")
-    	for line in fileinput:
+ result = [0,0,0,0,0,0,0]
+ fileinput = urllib.urlopen("http://smog.uppmax.uu.se:8080/swift/v1/tweets/tweets_19.txt")
+ print "processing input"
+ for line in fileinput:
         		if "han" in line:
-            			han += 1
+            			result[0] += 1
        			if "hon" in line:
-            			hon += 1
+            			result[1] += 1
         		if "den" in line:
-            			den += 1
+            			result[2] += 1
         		if "det" in line:
-            			det += 1
+            			result[3] += 1
         		if "denna" in line:
-            			denna += 1
+            			result[4] += 1
         		if "denne" in line:
-            			denne += 1
+            			result[5] += 1
         		if "hen" in line:
-           			hen += 1
-	data=subprocess.check_output(
-	[
-	print ("han -",han)
-	print ("hon -",hon)
-	print ("den -",den)
-	print ("det -",det)
-	print ("denna -",denna)
-	print ("denne -",denne)
-	print ("hen -",hen) ]
-	)
-	return data
-	
-if __name__ == '__main__':
+           			result[6] += 1 
 
-    app.run(host='0.0.0.0',debug=True)
-    
+ print len(result)
+ return result
