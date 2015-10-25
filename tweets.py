@@ -51,4 +51,4 @@ def count():
                 'hen':resultWithout[6]}
 
  print len(result)
- return {withreTweets, withoutTweets}
+ return (withreTweets, withoutTweets)
