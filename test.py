@@ -11,7 +11,8 @@ app = Flask(__name__)
 @app.route('/count/api/v1.0/saysomething', methods=['GET'])
 def cow_say():
     jobs=[]
-    arr = [0,0,0,0,0,0,0]
+    arr1 = [0,0,0,0,0,0,0]
+    arr2 = [0,0,0,0,0,0,0]
     jobs.append(twt.count)
     my_task = group(jobs)
     result = my_task.apply_async()
@@ -22,17 +23,17 @@ def cow_say():
     for i in r:
 	temp=i['tweets']
 	for j in range(len(temp)):
-		arr[j]+=temp[j]
+		arr1[j]+=temp[j]
 	temp=i['without_tweets']
 	for j in range(len(temp)):
-		arr[j]+=temp[j]
+		arr2[j]+=temp[j]
 
 
-	wth={'han':arr[0],'hon':arr[1],'den':arr[2],'det':arr[3]
-         ,'denna':arr[4],'denne':arr[5], 'hen':arr[6]}
-	wthout={'han':arr[0],'hon':arr[1],'den':arr[2],
-        'det':arr[3],'denna':arr[4],'denne':arr[5],
-         'hen':arr[6]}
+	wth={'han':arr1[0],'hon':arr1[1],'den':arr1[2],'det':arr1[3]
+         ,'denna':arr1[4],'denne':arr1[5], 'hen':arr1[6]}
+	wthout={'han':arr2[0],'hon':arr2[1],'den':arr2[2],
+        'det':arr2[3],'denna':arr2[4],'denne':arr2[5],
+         'hen':arr2[6]}
 		
 return jsonify({'tweets':wth, 'without_tweets': wthout})
 
