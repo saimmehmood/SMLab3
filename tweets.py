@@ -25,10 +25,9 @@ def count():
             			result[5] += 1
         		if "hen" in line:
            			result[6] += 1
-withreTweets = {'han':result[0], 'hon':result[1], 'den':result[2], 
+ withreTweets = {'han':result[0], 'hon':result[1], 'den':result[2], 
                 'det':result[3], 'denna':result[4], 'denne':result[5],
                 'hen':result[6]}
 
  print len(result)
-
- return result
+ return withreTweets
