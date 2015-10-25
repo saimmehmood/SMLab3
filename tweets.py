@@ -14,31 +14,31 @@ def count():
  for line in fileinput:
      if line != "\n":
         work = json.loads(line)
-        if "han" in work:
+        if "han" in work['text']:
                 result[0] += 1
                 if "retweeted_status" in work.viewkeys():
                     resultWithout[0] += 1
-        if "hon" in work:
+        if "hon" in work['text']:
                 result[1] += 1
                 if "retweeted_status" in work.viewkeys():
                     resultWithout[1] += 1
-        if "den" in work:
+        if "den" in work['text']:
                 result[2] += 1
                 if "retweeted_status" in work.viewkeys():
                     resultWithout[2] += 1
-        if "det" in work:
+        if "det" in work['text']:
                 result[3] += 1
                 if "retweeted_status" in work.viewkeys():
                     resultWithout[3] += 1
-        if "denna" in work:
+        if "denna" in work['text']:
                 result[4] += 1
                 if "retweeted_status" in work.viewkeys():
                     resultWithout[4] += 1
-        if "denne" in work:
+        if "denne" in work['text']:
                 result[5] += 1
                 if "retweeted_status" in work.viewkeys():
                     resultWithout[5] += 1
-        if "hen" in work:
+        if "hen" in work['text']:
                 result[6] += 1
                 if "retweeted_status" in work.viewkeys():
                     resultWithout[6] += 1
