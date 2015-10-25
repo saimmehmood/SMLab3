@@ -43,12 +43,12 @@ def count():
                 if "retweeted_status" in work.viewkeys():
                     resultWithout[6] += 1
 
- withreTweets = {'han':result[0], 'hon':result[1], 'den':result[2],
-                'det':result[3], 'denna':result[4], 'denne':result[5],
-                'hen':result[6]}
- withoutTweets = {'han':resultWithout[0], 'hon':resultWithout[1], 'den':resultWithout[2],
-                'det':resultWithout[3], 'denna':resultWithout[4], 'denne':resultWithout[5],
-                'hen':resultWithout[6]}
+ withreTweets = {result[0], result[1], result[2],
+                result[3], result[4], result[5],
+                result[6]}
+ withoutTweets = {resultWithout[0], resultWithout[1], resultWithout[2],
+                resultWithout[3], resultWithout[4], resultWithout[5],
+                resultWithout[6]}
 
  print len(result)
  return ({'tweets':withreTweets, 'without_tweets':withoutTweets})
