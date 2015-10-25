@@ -12,7 +12,7 @@ app = Flask(__name__)
 def cow_say():
     jobs=[]
     arr = [0,0,0,0,0,0,0]
-    jobs.append(twt.count.delay())
+    jobs.append(twt.count)
     my_task = group(jobs)
     result = my_task.apply_async()
   
