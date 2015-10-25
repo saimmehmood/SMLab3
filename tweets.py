@@ -1,5 +1,6 @@
 from celery import Celery
 import urllib
+import json
 import sys, os
 
 app = Celery('tasks', backend='amqp', broker='amqp://')
@@ -23,7 +24,11 @@ def count():
         		if "denne" in line:
             			result[5] += 1
         		if "hen" in line:
-           			result[6] += 1 
+           			result[6] += 1
+withreTweets = {'han':result[0], 'hon':result[1], 'den':result[2], 
+                'det':result[3], 'denna':result[4], 'denne':result[5],
+                'hen':result[6]}
 
  print len(result)
+
  return result
