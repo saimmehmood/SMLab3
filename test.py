@@ -14,7 +14,7 @@ def cow_say():
 
     jobs.append(twt.count.delay())
     my_task = group(jobs)
-    result = my_task.delay()
+    result = my_task.apply_async()
     
     r = result.get()
     
